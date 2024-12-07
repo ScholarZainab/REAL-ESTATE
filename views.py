@@ -1,27 +1,17 @@
-# Backend: Django - /real_estate/views.py
+# real_estate/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Property, Document
-from .serializers import PropertySerializer, DocumentSerializer
+from .models import Property, Solicitor
+from .serializers import PropertySerializer, SolicitorSerializer
 
-class GetListings(APIView):
+class FeaturedListings(APIView):
     def get(self, request):
-        listings = Property.objects.all()
-        serializer = PropertySerializer(listings, many=True)
+        featured = Property.objects.filter(category__in=['Platinum', 'Gold']).order_by('category')
+        serializer = PropertySerializer(featured, many=True)
         return Response(serializer.data)
 
-class ListProperty(APIView):
-    def post(self, request):
-        serializer = PropertySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'message': 'Property listed successfully!'}, status=201)
-        return Response(serializer.errors, status=400)
-
-class UploadDocument(APIView):
-    def post(self, request):
-        serializer = DocumentSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'message': 'Document uploaded successfully!'}, status=201)
-        return Response(serializer.errors, status=400)
+class SolicitorList(APIView):
+    def get(self, request):
+        solicitors = Solicitor.objects.filter(verified=True)
+        serializer = SolicitorSerializer(solicitors, many=True)
+        return Response(serializer.data)
