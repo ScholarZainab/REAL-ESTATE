@@ -28,3 +28,33 @@ class Chatbot(APIView):
             return Response({"reply": bot_reply})
         except Exception as e:
             return Response({"error": str(e)}, status=500)
+import stripe
+from django.conf import settings
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+class CreateCheckoutSession(APIView):
+    def post(self, request):
+        try:
+            session = stripe.checkout.Session.create(
+                payment_method_types=["card"],
+                line_items=[
+                    {
+                        "price_data": {
+                            "currency": "usd",
+                            "product_data": {"name": "Premium Platinum Listing"},
+                            "unit_amount": 100000,  # Amount in dollars
+                        },
+                        "quantity": 1,
+                    }
+                ],
+                mode="payment",
+                success_url="https://your-site.com/success",
+                cancel_url="https://your-site.com/cancel",
+            )
+            return Response({"url": session.url})
+        except Exception as e:
+            return Response({"error": str(e)}, status=500)
+
