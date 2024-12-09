@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elitehaven - Luxury Real Estate</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">Elitehaven</div>
+    <nav>
+      <ul>
+        <li><a href="#">Buy</a></li>
+        <li><a href="#">Sell</a></li>
+        <li><a href="#">Rent</a></li>
+        <li><a href="#">Agent Finder</a></li>
+        <li><a href="#">Sign Up/Log In</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="hero-image.jpg" alt="Luxury Property" class="hero-image">
+    <div class="hero-text">
+      <h1>Find Your Dream Home with Elitehaven</h1>
+      <p>Search, buy, and sell properties with ease</p>
+      <button onclick="window.location.href='#search-section'">Search Properties</button>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section id="search-section">
+    <div class="search-bar">
+      <input type="text" placeholder="Enter city, state, or zip code">
+      <button>Search</button>
+    </div>
+    <div class="filters">
+      <label for="price">Price Range:</label>
+      <select id="price">
+        <option value="any">Any</option>
+        <option value="low">Below $500,000</option>
+        <option value="mid">$500,000 - $1,000,000</option>
+        <option value="high">Above $1,000,000</option>
+      </select>
+
+      <label for="type">Property Type:</label>
+      <select id="type">
+        <option value="house">House</option>
+        <option value="land">Land</option>
+        <option value="apartment">Apartment</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Property Listing Section -->
+  <section class="property-listings">
+    <div class="property-card">
+      <img src="house1.jpg" alt="Luxury House">
+      <h3>Modern Villa</h3>
+      <p>Location: Beverly Hills, CA</p>
+      <p>Price: $2,500,000</p>
+      <span class="badge premium">Premium</span>
+    </div>
+    <div class="property-card">
+      <img src="house2.jpg" alt="Elegant House">
+      <h3>Elegant Bungalow</h3>
+      <p>Location: Miami, FL</p>
+      <p>Price: $1,800,000</p>
+    </div>
+  </section>
+
+  <!-- Admin Management Section -->
+  <section class="admin-management">
+    <h2>Premium Plans Management</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Price/Month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Platinum</td>
+          <td>$50</td>
+        </tr>
+        <tr>
+          <td>Gold</td>
+          <td>$30</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Elitehaven. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
